@@ -18,6 +18,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFakeDark, setIsFakeDark] = useState(false);
 
+  const PostContext = createContext();
+
   // Derived state. These are the posts that will actually be displayed
   const searchedPosts =
     searchQuery.length > 0
