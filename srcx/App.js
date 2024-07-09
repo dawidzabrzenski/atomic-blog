@@ -1,8 +1,6 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
-import ButtonDarkMode from "./components/ButtonDarkMode";
 import { PostProvider, usePosts } from "./PostContext";
-import Test from "./Test";
 
 function createRandomPost() {
   return {
@@ -30,6 +28,7 @@ function App() {
       >
         {isFakeDark ? "☀️" : "🌙"}
       </button>
+
       <PostProvider>
         <Header />
         <Main />
@@ -41,7 +40,7 @@ function App() {
 }
 
 function Header() {
-  // 3)
+  // 3) CONSUMING CONTEXT VALUE
   const { onClearPosts } = usePosts();
 
   return (
@@ -94,10 +93,9 @@ function Posts() {
 }
 
 function FormAddPost() {
+  const { onAddPost } = usePosts();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
-  const { onAddPost } = usePosts();
 
   const handleSubmit = function (e) {
     e.preventDefault();
@@ -138,7 +136,7 @@ function List() {
         ))}
       </ul>
 
-      <Test />
+      {/* <Test /> */}
     </>
   );
 }

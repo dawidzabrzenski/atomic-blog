@@ -8,7 +8,7 @@ function createRandomPost() {
   };
 }
 
-// CREATE A NEW CONTEXT
+// 1) CREATE A CONTEXT
 const PostContext = createContext();
 
 function PostProvider({ children }) {
@@ -43,9 +43,12 @@ function PostProvider({ children }) {
       searchQuery,
       setSearchQuery,
     };
-  }, [searchQuery, searchedPosts]);
+  }, [searchedPosts, searchQuery]);
 
-  return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
+  return (
+    // 2) PROVIDE VALUE TO CHILD COMPONENTS
+    <PostContext.Provider value={value}>{children}</PostContext.Provider>
+  );
 }
 
 function usePosts() {
